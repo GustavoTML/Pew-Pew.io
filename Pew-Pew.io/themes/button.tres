@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bxwd2watknt5p"]
+
+[ext_resource type="FontFile" uid="uid://q4xixt6t313n" path="res://fonts/PixelOperator8.ttf" id="1_dpjbf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8pfl"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnr13"]
+bg_color = Color(1, 1, 1, 1)
+
+[resource]
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/fonts/font = ExtResource("1_dpjbf")
+Button/styles/disabled = SubResource("StyleBoxFlat_s8pfl")
+Button/styles/hover = SubResource("StyleBoxFlat_xnr13")

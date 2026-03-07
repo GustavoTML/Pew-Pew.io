@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2o2vag1o16dh"]
+
+[ext_resource type="Texture2D" uid="uid://gyynj6b2ocyt" path="res://assets/Objects/Guns/pistol/Glock.png" id="1_0lr72"]
+[ext_resource type="Script" uid="uid://crwa5flymexgq" path="res://player/pistols/glock/glock.gd" id="1_68asq"]
+[ext_resource type="AudioStream" uid="uid://cfk7yp48difkr" path="res://assets/sounds/9mm/9mm Single Isolated.mp3" id="2_68asq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8i20"]
+size = Vector2(758, 544)
+
+[node name="Glock" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_68asq")
+
+[node name="Range" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_n8i20")
+
+[node name="Pivot" type="Marker2D" parent="."]
+
+[node name="Pistol" type="Sprite2D" parent="Pivot"]
+position = Vector2(14, 0)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_0lr72")
+region_enabled = true
+region_rect = Rect2(18, 8, 30, 20)
+
+[node name="Bullet_Point" type="Marker2D" parent="Pivot/Pistol"]
+position = Vector2(12.5, -5.83333)
+
+[node name="CD_Shoot" type="Timer" parent="."]
+one_shot = true
+
+[node name="Shot_Sound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_68asq")
+
+[connection signal="timeout" from="CD_Shoot" to="." method="_on_cd_shoot_timeout"]

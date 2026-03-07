@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqnegay80ti5e"]
+
+[ext_resource type="Script" uid="uid://der3jh45uyx8n" path="res://player/snipes/sniper_green/sniper_green.gd" id="1_03vb3"]
+[ext_resource type="Texture2D" uid="uid://ccmiurscbvpta" path="res://assets/Objects/Guns/snipe/sniper_green.png" id="1_lr7ab"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8i20"]
+size = Vector2(758, 544)
+
+[node name="Sniper_Green" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_03vb3")
+
+[node name="Range" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_n8i20")
+
+[node name="Pivot" type="Marker2D" parent="."]
+
+[node name="Pistol" type="Sprite2D" parent="Pivot"]
+position = Vector2(46, -1)
+scale = Vector2(3, 2.5)
+texture = ExtResource("1_lr7ab")
+region_enabled = true
+region_rect = Rect2(0, 0, 37, 9)
+
+[node name="Bullet_Point" type="Marker2D" parent="Pivot/Pistol"]
+position = Vector2(14.6667, -0.4)
+
+[node name="CD_Shoot" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="CD_Shoot" to="." method="_on_cd_shoot_timeout"]

@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://cpv1gyc1w7h4p"]
+
+[ext_resource type="Texture2D" uid="uid://bcqdukdckusxs" path="res://assets/Objects/Guns/bazookas/Bazooka.png" id="1_iy12y"]
+[ext_resource type="Script" uid="uid://f1t7agrs5atq" path="res://player/bazookas/bazooka/bazooka.gd" id="1_q1jgn"]
+[ext_resource type="AudioStream" uid="uid://b00onnk6sucy7" path="res://assets/sounds/Rocket_Shot/Rocket_Shot.wav" id="3_gegu0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8i20"]
+size = Vector2(758, 544)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xl5y"]
+atlas = ExtResource("1_iy12y")
+region = Rect2(384, 0, 192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j318"]
+atlas = ExtResource("1_iy12y")
+region = Rect2(576, 0, 192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpjfi"]
+atlas = ExtResource("1_iy12y")
+region = Rect2(768, 0, 192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nm72h"]
+atlas = ExtResource("1_iy12y")
+region = Rect2(960, 0, 192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvcit"]
+atlas = ExtResource("1_iy12y")
+region = Rect2(1152, 0, 192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lklk0"]
+atlas = ExtResource("1_iy12y")
+region = Rect2(1344, 0, 192, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycofl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xl5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j318")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpjfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nm72h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvcit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lklk0")
+}],
+"loop": false,
+"name": &"shot",
+"speed": 15.0
+}]
+
+[node name="Bazooka" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_q1jgn")
+
+[node name="Range" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_n8i20")
+
+[node name="Pivot" type="Marker2D" parent="."]
+
+[node name="Pistol" type="AnimatedSprite2D" parent="Pivot"]
+unique_name_in_owner = true
+position = Vector2(49, -5)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ycofl")
+animation = &"shot"
+frame = 5
+
+[node name="Bullet_Point" type="Marker2D" parent="Pivot/Pistol"]
+unique_name_in_owner = true
+position = Vector2(46, -2.66667)
+
+[node name="CD_Shoot" type="Timer" parent="."]
+one_shot = true
+
+[node name="Shot_Sound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_gegu0")
+
+[connection signal="timeout" from="CD_Shoot" to="." method="_on_cd_shoot_timeout"]

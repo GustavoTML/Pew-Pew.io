@@ -1,0 +1,315 @@
+[gd_scene load_steps=19 format=3 uid="uid://c4uhme43f33od"]
+
+[ext_resource type="Texture2D" uid="uid://ddh4v07myv82r" path="res://assets/effects/Circle_explosion/Circle_explosion1.png" id="1_agyxr"]
+[ext_resource type="Script" uid="uid://c1gjiyjnqciyx" path="res://effect/esplosions/circle_explosion/circle_explosion.gd" id="1_nj1bm"]
+[ext_resource type="Texture2D" uid="uid://3sqp4obmegjt" path="res://assets/effects/Circle_explosion/Circle_explosion2.png" id="2_nj1bm"]
+[ext_resource type="Texture2D" uid="uid://inp3xtwue0sd" path="res://assets/effects/Circle_explosion/Circle_explosion3.png" id="3_w6kgx"]
+[ext_resource type="Texture2D" uid="uid://cffygy1wner7h" path="res://assets/effects/Circle_explosion/Circle_explosion4.png" id="4_2t21v"]
+[ext_resource type="Texture2D" uid="uid://dywlwt230k8hu" path="res://assets/effects/Circle_explosion/Circle_explosion5.png" id="5_6f5xt"]
+[ext_resource type="Texture2D" uid="uid://qtlfpc2o0gvq" path="res://assets/effects/Circle_explosion/Circle_explosion6.png" id="6_uw6f5"]
+[ext_resource type="Texture2D" uid="uid://dna5jj6wphw3q" path="res://assets/effects/Circle_explosion/Circle_explosion7.png" id="7_d3ev3"]
+[ext_resource type="Texture2D" uid="uid://cwocvgdfyatr1" path="res://assets/effects/Circle_explosion/Circle_explosion8.png" id="8_57ei1"]
+[ext_resource type="Texture2D" uid="uid://30mvk32v5t7n" path="res://assets/effects/Circle_explosion/Circle_explosion9.png" id="9_ej4dg"]
+[ext_resource type="Texture2D" uid="uid://dfyp5s73fccpg" path="res://assets/effects/Circle_explosion/Circle_explosion10.png" id="10_rlp7j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1udc7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_agyxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nj1bm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w6kgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2t21v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6f5xt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uw6f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_d3ev3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_57ei1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ej4dg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rlp7j")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 30.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_agyxr"]
+radius = 7.2111
+
+[sub_resource type="Animation" id="Animation_w6kgx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"explosion"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [7.2111]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Knockback_Area/Collision:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shockwave:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Anim:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Knockback_Area/Collision:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_nj1bm"]
+resource_name = "explosion"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"explosion"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.045, 0.09, 0.135, 0.18, 0.225, 0.27, 0.315, 0.36, 0.405),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [7.2111, 70.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Knockback_Area/Collision:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 100.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shockwave:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Anim:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.410783),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Knockback_Area/Collision:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.410783),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2t21v"]
+_data = {
+&"RESET": SubResource("Animation_w6kgx"),
+&"explosion": SubResource("Animation_nj1bm")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nj1bm"]
+radius = 0.01
+
+[sub_resource type="Gradient" id="Gradient_nj1bm"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Circle_Explosion" type="Area2D"]
+top_level = true
+scale = Vector2(1.5, 1.5)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_nj1bm")
+
+[node name="Anim" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_1udc7")
+animation = &"explosion"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_agyxr")
+debug_color = Color(0.998421, 0, 0.142457, 0.42)
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2t21v")
+}
+autoplay = "explosion"
+
+[node name="Knockback_Area" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="Collision" type="CollisionShape2D" parent="Knockback_Area"]
+shape = SubResource("CircleShape2D_nj1bm")
+
+[node name="Shockwave" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 10.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+linear_accel_min = -250.0
+linear_accel_max = -250.0
+scale_amount_min = 5.0
+scale_amount_max = 9.0
+color_ramp = SubResource("Gradient_nj1bm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="Animator" to="." method="_on_animator_animation_finished"]
+[connection signal="body_entered" from="Knockback_Area" to="." method="_on_knockback_area_body_entered"]

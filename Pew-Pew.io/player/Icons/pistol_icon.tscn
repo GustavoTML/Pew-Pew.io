@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://l83c76yt7hi2"]
+
+[ext_resource type="Script" uid="uid://ckak5dvdghm8b" path="res://player/Icons/Weapon_Icon.gd" id="1_nfh7a"]
+[ext_resource type="PackedScene" uid="uid://di4idfvi8kd7u" path="res://player/pistol.tscn" id="2_yxhun"]
+[ext_resource type="Texture2D" uid="uid://c5i11povubvkp" path="res://assets/Objects/Guns/pistol/pistol.png" id="3_gx0fr"]
+[ext_resource type="Texture2D" uid="uid://db6yjtpyruxgl" path="res://assets/Objects/projecties/Bolt_white.png" id="3_yxhun"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yxhun"]
+radius = 21.0238
+
+[node name="Pistol_Icon" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_nfh7a")
+gun = ExtResource("2_yxhun")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("3_yxhun")
+region_rect = Rect2(0, 0, 10, 8)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_yxhun")
+
+[node name="Icon" type="Sprite2D" parent="."]
+rotation = -0.523599
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_gx0fr")
+region_enabled = true
+region_rect = Rect2(0, 0, 70, 50)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

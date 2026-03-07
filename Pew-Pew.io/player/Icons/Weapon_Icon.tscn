@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://y0wpr4mmtdr2"]
+
+[ext_resource type="Script" uid="uid://ckak5dvdghm8b" path="res://player/Icons/Weapon_Icon.gd" id="1_mq2v2"]
+[ext_resource type="Texture2D" uid="uid://db6yjtpyruxgl" path="res://assets/Objects/projecties/Bolt_white.png" id="2_i3v75"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ojne"]
+radius = 21.0238
+
+[node name="Weapon_Icon" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_mq2v2")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("2_i3v75")
+region_rect = Rect2(0, 0, 10, 8)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_3ojne")
+
+[node name="Icon" type="Sprite2D" parent="."]
+rotation = -0.523599
+scale = Vector2(0.03, 0.03)
+region_enabled = true
+region_rect = Rect2(482, 1167, 1261, 623)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

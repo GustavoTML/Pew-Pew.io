@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctovt1nhj5tac"]
+
+[ext_resource type="Script" uid="uid://ckak5dvdghm8b" path="res://player/Icons/Weapon_Icon.gd" id="1_hek1g"]
+[ext_resource type="PackedScene" uid="uid://cpv1gyc1w7h4p" path="res://player/bazookas/bazooka/bazooka.tscn" id="2_21iwh"]
+[ext_resource type="Texture2D" uid="uid://db6yjtpyruxgl" path="res://assets/Objects/projecties/Bolt_white.png" id="3_hek1g"]
+[ext_resource type="Texture2D" uid="uid://bcqdukdckusxs" path="res://assets/Objects/Guns/bazookas/Bazooka.png" id="4_vojpk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ojne"]
+radius = 21.0238
+
+[node name="Bazooka_Icon" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_hek1g")
+gun = ExtResource("2_21iwh")
+set_rarity = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("3_hek1g")
+region_rect = Rect2(0, 0, 10, 8)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_3ojne")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
+rotation = -0.523599
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_vojpk")
+region_enabled = true
+region_rect = Rect2(1379, 8, 112, 23)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

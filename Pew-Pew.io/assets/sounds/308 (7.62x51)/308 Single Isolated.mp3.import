@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://covtnc3in5pp2"
+path="res://.godot/imported/308 Single Isolated.mp3-764cc5853da1fafd8e19fd72740daffe.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/308 (7.62x51)/308 Single Isolated.mp3"
+dest_files=["res://.godot/imported/308 Single Isolated.mp3-764cc5853da1fafd8e19fd72740daffe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

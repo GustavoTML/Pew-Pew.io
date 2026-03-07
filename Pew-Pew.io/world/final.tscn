@@ -1,0 +1,286 @@
+[gd_scene load_steps=13 format=3 uid="uid://biavqyfs1gvhs"]
+
+[ext_resource type="Script" uid="uid://debx2quflhvd6" path="res://world/final.gd" id="1_ksjq0"]
+[ext_resource type="FontFile" uid="uid://celgr0jjlup6m" path="res://fonts/PixelOperator8-Bold.ttf" id="1_prb26"]
+[ext_resource type="Texture2D" uid="uid://3c3lp1hmijui" path="res://assets/UIs/GUI.png" id="3_ksjq0"]
+[ext_resource type="FontFile" uid="uid://d3ctg8lkm0upu" path="res://fonts/ThaleahFat.ttf" id="4_iyxfa"]
+[ext_resource type="Theme" uid="uid://cka7bweid7pbr" path="res://themes/menu_button2.tres" id="4_vteq3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ewdq"]
+font = ExtResource("1_prb26")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 1, 0, 0.270588)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vteq3"]
+atlas = ExtResource("3_ksjq0")
+region = Rect2(113, 81, 30, 14)
+
+[sub_resource type="Animation" id="Animation_iyxfa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Buttons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ksjq0"]
+resource_name = "entry"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Buttons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.36, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vteq3"]
+_data = {
+&"RESET": SubResource("Animation_iyxfa"),
+&"entry": SubResource("Animation_ksjq0")
+}
+
+[sub_resource type="Curve" id="Curve_iyxfa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.268483), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_vteq3"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[node name="Final" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ksjq0")
+
+[node name="BG" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.843839, 0.827962, 0.81136, 0.705882)
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = -212.0
+offset_right = 488.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Parabens 
+voce sobrevivel! 
+"
+label_settings = SubResource("LabelSettings_3ewdq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(420, 89)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.5
+offset_top = 21.5
+offset_right = 239.5
+offset_bottom = 110.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Restart" type="TextureRect" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_vteq3")
+
+[node name="Restart" type="Button" parent="Buttons/Restart"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.067
+anchor_right = 0.968
+anchor_bottom = 0.933
+offset_left = 0.0239997
+offset_top = -0.04
+offset_right = -0.0240173
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("4_vteq3")
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 1, 0, 0.662745)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_iyxfa")
+theme_override_font_sizes/font_size = 48
+text = "RESTART"
+
+[node name="Exit" type="TextureRect" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_vteq3")
+
+[node name="Exit" type="Button" parent="Buttons/Exit"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.067
+anchor_right = 0.968
+anchor_bottom = 0.933
+offset_left = 0.0239997
+offset_top = -0.04
+offset_right = -0.0240173
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("4_vteq3")
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 0.662745)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_iyxfa")
+theme_override_font_sizes/font_size = 48
+text = "EXIT"
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vteq3")
+}
+
+[node name="Hardcore" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -217.0
+offset_top = -104.0
+offset_right = -42.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_vteq3")
+
+[node name="HARDCORE_PARTICLES" type="CPUParticles2D" parent="Hardcore"]
+z_index = -1
+position = Vector2(90, 33)
+amount = 50
+lifetime = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(80, 20)
+gravity = Vector2(0, -700)
+scale_amount_min = 8.0
+scale_amount_max = 12.0
+scale_amount_curve = SubResource("Curve_iyxfa")
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("Gradient_vteq3")
+
+[node name="Hardcore" type="Button" parent="Hardcore"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.5
+offset_top = -27.0
+offset_right = 81.5
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("4_vteq3")
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+text = "HARDCORE
+MODE"
+
+[connection signal="pressed" from="Buttons/Restart/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Buttons/Exit/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Hardcore/Hardcore" to="." method="_on_hardcore_pressed"]

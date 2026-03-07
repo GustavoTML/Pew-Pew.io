@@ -1,0 +1,824 @@
+[gd_scene load_steps=25 format=3 uid="uid://bnragqp3slo5v"]
+
+[ext_resource type="Script" uid="uid://6yedsdlv8dka" path="res://enemies/purple_slime_boss/purple_slime_boss.gd" id="1_jpas1"]
+[ext_resource type="Texture2D" uid="uid://2a4qk21bapy" path="res://enviroments/ground_shadow.png" id="1_r8q0i"]
+[ext_resource type="Texture2D" uid="uid://4gisng5oqe56" path="res://assets/enemies/slimes/4_cores.png" id="3_8ulr1"]
+[ext_resource type="Texture2D" uid="uid://yctpigklvbs" path="res://assets/enemies/slime/slime_face_white.png" id="4_3euol"]
+[ext_resource type="Texture2D" uid="uid://bxjl305aq5bls" path="res://assets/enemies/slime/slime_hurt_eyes_white.png" id="6_jpas1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bkm6f"]
+radius = 160.012
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1x0jm"]
+radius = 108.0
+height = 328.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gdm0"]
+bg_color = Color(0, 0, 0, 0.8)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwolf"]
+bg_color = Color(0.872706, 1.97336e-06, 9.62615e-07, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_r8q0i"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_0gdm0")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_vwolf")
+
+[sub_resource type="Shader" id="Shader_r8q0i"]
+code = "shader_type canvas_item;
+uniform vec4 blink_color:source_color;
+uniform float blink_intensity = 0;
+
+void fragment(){
+	vec4 color = texture(TEXTURE, UV);
+	color = mix(color, blink_color, blink_intensity * color.a);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j2sot"]
+resource_local_to_scene = true
+shader = SubResource("Shader_r8q0i")
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_intensity = 0.0
+
+[sub_resource type="Gradient" id="Gradient_r8q0i"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_e3ijd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/Face:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-25.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor/SlimeBody:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anchor:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Anchor/Face/SlimeFace:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_3euol")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Anchor:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Anchor/SlimeBody/SlimeBodyHurt:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Anchor/Face/SlimeFace:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Anchor:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Anchor/Face/SlimeFace:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.833333, 0.816326)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Anchor/Face:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -25)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Shockwave:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Anchor/Face:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, 7)]
+}
+
+[sub_resource type="Animation" id="Animation_vd6b5"]
+resource_name = "die"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/SlimeBody/SlimeBodyHurt:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(1, 0.364)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor/Face/SlimeFace:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jpas1"]
+resource_name = "entry"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/SlimeBody:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.666667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.962), Vector2(0.7, 0.962), Vector2(1.3, 0.624), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -520), Vector2(0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [15.0],
+"method": &"camerashake"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shockwave:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fv1wv"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/Face:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [-28.0, -24.0, -28.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor/SlimeBody:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 0.95), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anchor:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_r8q0i"]
+resource_name = "jump_attack"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/SlimeBody:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166, 0.3, 1, 1.6, 1.734, 1.93333, 2.136, 2.27, 2.97, 3.57, 3.704, 3.93333, 4.166, 4.3, 4.93333, 5.53333, 5.66733, 5.81733),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.5), Vector2(0.75, 1.2), Vector2(1, 0.8), Vector2(0.75, 1.2), Vector2(1.2, 0.5), Vector2(1, 1), Vector2(1.2, 0.5), Vector2(0.75, 1.2), Vector2(1, 0.8), Vector2(0.75, 1.2), Vector2(1.2, 0.5), Vector2(1, 1), Vector2(1.2, 0.5), Vector2(0.75, 1.2), Vector2(1, 0.8), Vector2(0.75, 1.2), Vector2(1.2, 0.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 1, 1.634, 2.26667, 2.97, 3.604, 4.3, 4.93333, 5.56733),
+"transitions": PackedFloat32Array(1, 2.07053, 2.23401e-05, 1, 2.07053, 1e-05, 1, 2.07053, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1500), Vector2(0, 0), Vector2(0, 0), Vector2(0, -1500), Vector2(0, 0), Vector2(0, 0), Vector2(0, -1500), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anchor/Face/SlimeFace:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.6, 1.884, 1.97, 2.27, 3.57, 3.854, 3.96667, 4.26667, 5.56667, 5.85067),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.87), Vector2(0.85, 1), Vector2(0.85, 1), Vector2(0.8, 0.87), Vector2(0.8, 0.87), Vector2(0.85, 1), Vector2(0.85, 1), Vector2(0.8, 0.87), Vector2(0.8, 0.87), Vector2(0.85, 1), Vector2(0.85, 1), Vector2(0.8, 0.87)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Anchor/Face:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166, 0.3, 1.36667, 1.73333, 1.884, 1.97, 2.136, 2.27, 3.33667, 3.70333, 3.854, 3.96667, 4.13267, 4.26667, 5.33333, 5.7, 5.85067),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -25), Vector2(0, 35), Vector2(0, -100), Vector2(0, 35), Vector2(0, -70), Vector2(0, -25), Vector2(0, -25), Vector2(0, 35), Vector2(0, -100), Vector2(0, 35), Vector2(0, -70), Vector2(0, -25), Vector2(0, -25), Vector2(0, 35), Vector2(0, -100), Vector2(0, 35), Vector2(0, -70), Vector2(0, -25)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.333333, 1.58, 1.66667, 2.30333, 3.55, 3.63667, 4.33333, 5.58, 5.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [true],
+"method": &"desactive_all"
+}, {
+"args": [false],
+"method": &"desactive_all"
+}, {
+"args": [],
+"method": &"all_direction_shot"
+}, {
+"args": [true],
+"method": &"desactive_all"
+}, {
+"args": [false],
+"method": &"desactive_all"
+}, {
+"args": [],
+"method": &"all_direction_shot"
+}, {
+"args": [true],
+"method": &"desactive_all"
+}, {
+"args": [false],
+"method": &"desactive_all"
+}, {
+"args": [],
+"method": &"all_direction_shot"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shockwave:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.64, 3.61, 5.64),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.366667, 1.61, 1.64, 2.33333, 3.58, 3.6, 4.33333, 5.6, 5.64073),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"set_direction"
+}, {
+"args": [true],
+"method": &"set_direction"
+}, {
+"args": [30],
+"method": &"camerashake"
+}, {
+"args": [],
+"method": &"set_direction"
+}, {
+"args": [true],
+"method": &"set_direction"
+}, {
+"args": [30],
+"method": &"camerashake"
+}, {
+"args": [],
+"method": &"set_direction"
+}, {
+"args": [true],
+"method": &"set_direction"
+}, {
+"args": [30],
+"method": &"camerashake"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8ulr1"]
+resource_name = "multiple_shots"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/SlimeBody:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 2.43333),
+"transitions": PackedFloat32Array(1, 0.482968, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor/Face:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 2.31667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -25), Vector2(0, -135), Vector2(0, -10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anchor/Face:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.75, 2.43333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(7, 7), Vector2(8, 8), Vector2(7, 7)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Anchor/Face/SlimeFace:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75, 2.43333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_3euol"), ExtResource("6_jpas1"), ExtResource("4_3euol")]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.76, 0.866667, 0.966667, 1.06667, 1.16667, 1.26667, 1.36667, 1.466, 1.57267, 1.67267, 1.77267, 1.87267, 1.97267, 2.07267, 2.17, 2.27, 2.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"one_direction_shot"
+}, {
+"args": [],
+"method": &"idle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_3kicn"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -20.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor/SlimeBody:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.9, 1.1), Vector2(1.1, 0.9), Vector2(0.9, 1.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anchor/Face:position:y")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-24.0, -28.0, -24.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b3i72"]
+_data = {
+&"RESET": SubResource("Animation_e3ijd"),
+&"die": SubResource("Animation_vd6b5"),
+&"entry": SubResource("Animation_jpas1"),
+&"idle": SubResource("Animation_fv1wv"),
+&"jump_attack": SubResource("Animation_r8q0i"),
+&"multiple_shots": SubResource("Animation_8ulr1"),
+&"walk": SubResource("Animation_3kicn")
+}
+
+[sub_resource type="Animation" id="Animation_fpp27"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/SlimeBody/SlimeBodyHurt:material:shader_parameter/blink_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor/SlimeBody/SlimeBodyHurt:material:shader_parameter/blink_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cwq0h"]
+resource_name = "hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/SlimeBody/SlimeBodyHurt:material:shader_parameter/blink_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor/SlimeBody/SlimeBodyHurt:material:shader_parameter/blink_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ock6t"]
+_data = {
+&"RESET": SubResource("Animation_fpp27"),
+&"hit": SubResource("Animation_cwq0h")
+}
+
+[node name="Purple_Slime_Boss" type="CharacterBody2D"]
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 7
+platform_on_leave = 2
+platform_floor_layers = 4294967040
+script = ExtResource("1_jpas1")
+
+[node name="Damage_Area" type="Area2D" parent="."]
+position = Vector2(2, -4)
+collision_mask = 2
+
+[node name="Damage_Trail" type="Sprite2D" parent="Damage_Area"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 0, 0, 0.482353)
+position = Vector2(-1, 34)
+scale = Vector2(3.69048, 3.30769)
+texture = ExtResource("1_r8q0i")
+
+[node name="Damage" type="CollisionShape2D" parent="Damage_Area"]
+position = Vector2(-2, -8)
+shape = SubResource("CircleShape2D_bkm6f")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_1x0jm")
+
+[node name="Anchor" type="Marker2D" parent="."]
+scale = Vector2(0.6, 0.6)
+
+[node name="Lifebar" type="ProgressBar" parent="Anchor"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -317.0
+offset_top = 223.0
+offset_right = 744.0
+offset_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.4)
+theme = SubResource("Theme_r8q0i")
+value = 75.0
+show_percentage = false
+
+[node name="SlimeBody" type="Sprite2D" parent="Anchor"]
+
+[node name="SlimeBodyHurt" type="Sprite2D" parent="Anchor/SlimeBody"]
+modulate = Color(1, 0, 1, 1)
+material = SubResource("ShaderMaterial_j2sot")
+position = Vector2(3.05176e-05, 40)
+scale = Vector2(3, 3)
+texture = ExtResource("3_8ulr1")
+offset = Vector2(0, -36)
+region_enabled = true
+region_rect = Rect2(19, 29, 218, 183)
+
+[node name="Face" type="Marker2D" parent="Anchor"]
+position = Vector2(0, -25)
+scale = Vector2(7, 7)
+
+[node name="SlimeFace" type="Sprite2D" parent="Anchor/Face"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 2.61904)
+scale = Vector2(0.833333, 0.816326)
+texture = ExtResource("4_3euol")
+
+[node name="Shockwave" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 400
+lifetime = 1.2
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 10.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1800.0
+initial_velocity_max = 2000.0
+damping_min = 900.0
+damping_max = 1200.0
+scale_amount_min = 5.0
+scale_amount_max = 9.0
+color_ramp = SubResource("Gradient_r8q0i")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_b3i72")
+}
+
+[node name="Hit_Anim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_ock6t")
+}
+
+[node name="Knockback_CD" type="Timer" parent="."]
+one_shot = true
+
+[node name="Jump_Attack_CD" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Damage_Area" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="Damage_Area" to="." method="_on_damage_area_body_exited"]
+[connection signal="timeout" from="Knockback_CD" to="." method="_on_knockback_cd_timeout"]
+[connection signal="timeout" from="Jump_Attack_CD" to="." method="_on_jump_attack_cd_timeout"]

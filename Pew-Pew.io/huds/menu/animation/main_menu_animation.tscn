@@ -1,0 +1,495 @@
+[gd_scene load_steps=21 format=3 uid="uid://houxiwske6mi"]
+
+[ext_resource type="Texture2D" uid="uid://bawvpptph1hff" path="res://assets/players/char 1/no hands/walk_5.png" id="1_k0bq3"]
+[ext_resource type="Texture2D" uid="uid://lhcaf0iahe8t" path="res://assets/players/char 1/no hands/roll_4.png" id="2_xlheb"]
+[ext_resource type="Texture2D" uid="uid://du6a0mo7uqao4" path="res://assets/players/char 1/with hands/idle_3.png" id="3_oo3bt"]
+[ext_resource type="Texture2D" uid="uid://drk3rd4cxgmbv" path="res://assets/Objects/Guns/shotgun/weaponR3.png" id="4_orgd3"]
+[ext_resource type="Texture2D" uid="uid://bvhatu52qiq7x" path="res://assets/players/char 1/with hands/idle_2.png" id="5_eskld"]
+[ext_resource type="Texture2D" uid="uid://cwriagktr0pr2" path="res://assets/Objects/Guns/assault/weaponR1.png" id="6_xem7f"]
+[ext_resource type="Texture2D" uid="uid://dvgfmy6vtvjji" path="res://assets/enemies/slime/slime_body.png" id="7_uwxxd"]
+[ext_resource type="Texture2D" uid="uid://c078jrp2yvc4s" path="res://assets/enemies/slime/slime_face.png" id="8_4fpok"]
+[ext_resource type="Texture2D" uid="uid://btbxea1f3vwot" path="res://assets/enemies/slime/slime_body_hurt.png" id="9_2vi4h"]
+[ext_resource type="Texture2D" uid="uid://cai2ijnbypqtr" path="res://assets/enemies/slime/slime_hurt_eyes.png" id="10_8dik7"]
+[ext_resource type="Texture2D" uid="uid://wbgmdfwpigkh" path="res://assets/enemies/slimes/Sprite Sheet - Blue Idle.png" id="11_wvjy4"]
+
+[sub_resource type="Animation" id="Animation_7n042"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("char/Hand_Right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-280, -162)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("char/Hand_Left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, -170)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("char/Hand_Left:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.0472]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("char/Hand_Right:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0472]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("char/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("char/Head:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, -348)]
+}
+
+[sub_resource type="Animation" id="Animation_gby05"]
+resource_name = "float_hand"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("char/Hand_Right:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-280, -162), Vector2(-252, -175)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("char/Hand_Left:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(300, -170), Vector2(280, -175)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("char/Hand_Left:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0472, -1.309]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("char/Hand_Right:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0472, 1.309]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("char/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.0872665]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("char/Head:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(18, -348), Vector2(8, -348)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_smu5n"]
+_data = {
+&"RESET": SubResource("Animation_7n042"),
+&"float_hand": SubResource("Animation_gby05")
+}
+
+[sub_resource type="Animation" id="Animation_xnkrm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Green_slime/SlimeFace:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Red_slime/RageFace:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -31)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Blue_slme/SlimeFace:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jpl1r"]
+resource_name = "float-faces"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Green_slime/SlimeFace:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -30), Vector2(0, -33.063), Vector2(0, -27.261)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Red_slime/RageFace:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -28.341), Vector2(0, -31), Vector2(0, -33.973)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Blue_slme/SlimeFace:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.16667, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -0.791), Vector2(0, 0.736), Vector2(0, -0.791), Vector2(0, 0.736)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sakpa"]
+_data = {
+&"RESET": SubResource("Animation_xnkrm"),
+&"float-faces": SubResource("Animation_jpl1r")
+}
+
+[sub_resource type="Animation" id="Animation_qy0mb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Char_Parts/char:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(248, 281)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slimes_Parts/Slimes:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Char_Parts/char:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Slimes_Parts/Slimes:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0bpca"]
+resource_name = "entry"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Char_Parts/char:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-441, 256), Vector2(248, 281)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slimes_Parts/Slimes:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(635, -38), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Char_Parts/char:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Slimes_Parts/Slimes:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2yc6d"]
+_data = {
+&"RESET": SubResource("Animation_qy0mb"),
+&"entry": SubResource("Animation_0bpca")
+}
+
+[node name="Main_Menu_Animation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Char_Parts" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -360.0
+offset_right = 40.0
+offset_bottom = -360.0
+grow_vertical = 2
+
+[node name="char" type="Sprite2D" parent="Char_Parts"]
+position = Vector2(248, 281)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_k0bq3")
+region_enabled = true
+region_rect = Rect2(906, 1560, 225, 195)
+
+[node name="Head" type="Sprite2D" parent="Char_Parts/char"]
+position = Vector2(18, -348)
+texture = ExtResource("2_xlheb")
+region_enabled = true
+region_rect = Rect2(755, 1132, 550, 528)
+
+[node name="Hand_Left" type="Sprite2D" parent="Char_Parts/char"]
+position = Vector2(300, -170)
+rotation = -1.0472
+texture = ExtResource("3_oo3bt")
+region_enabled = true
+region_rect = Rect2(1122, 1607, 141, 135)
+
+[node name="Shotgun" type="Sprite2D" parent="Char_Parts/char/Hand_Left"]
+position = Vector2(79.9089, 62.4064)
+rotation = 0.785398
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_orgd3")
+region_enabled = true
+region_rect = Rect2(456, 1383, 1279, 384)
+
+[node name="Hand_Right" type="Sprite2D" parent="Char_Parts/char"]
+position = Vector2(-280, -162)
+rotation = 1.0472
+texture = ExtResource("5_eskld")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(781, 1601, 137, 134)
+
+[node name="Assault" type="Sprite2D" parent="Char_Parts/char/Hand_Right"]
+position = Vector2(-86.2671, 21.2132)
+rotation = -0.785398
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_xem7f")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(472, 1167, 1272, 622)
+
+[node name="Basic_Anim" type="AnimationPlayer" parent="Char_Parts"]
+libraries = {
+&"": SubResource("AnimationLibrary_smu5n")
+}
+autoplay = "float_hand"
+speed_scale = 0.7
+
+[node name="Slimes_Parts" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -31.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Slimes" type="Node2D" parent="Slimes_Parts"]
+
+[node name="Green_slime" type="Sprite2D" parent="Slimes_Parts/Slimes"]
+position = Vector2(-193.788, -143.092)
+rotation = -0.261799
+scale = Vector2(1.39585, 1.37868)
+texture = ExtResource("7_uwxxd")
+offset = Vector2(0, -36)
+
+[node name="SlimeFace" type="Sprite2D" parent="Slimes_Parts/Slimes/Green_slime"]
+position = Vector2(0, -30)
+texture = ExtResource("8_4fpok")
+
+[node name="Red_slime" type="Sprite2D" parent="Slimes_Parts/Slimes"]
+position = Vector2(-98.459, 18.6722)
+rotation = -0.261799
+scale = Vector2(1.40665, 1.24755)
+texture = ExtResource("9_2vi4h")
+offset = Vector2(0, -36)
+
+[node name="RageFace" type="Sprite2D" parent="Slimes_Parts/Slimes/Red_slime"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1, -31)
+texture = ExtResource("10_8dik7")
+
+[node name="Blue_slme" type="Sprite2D" parent="Slimes_Parts/Slimes"]
+position = Vector2(-88.7296, 162.591)
+rotation = -0.261799
+scale = Vector2(4.24865, 5.1375)
+texture = ExtResource("11_wvjy4")
+region_enabled = true
+region_rect = Rect2(318, 10, 36, 22)
+
+[node name="SlimeFace" type="Sprite2D" parent="Slimes_Parts/Slimes/Blue_slme"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.285714, 0.47449)
+texture = ExtResource("8_4fpok")
+
+[node name="Slime_Anim" type="AnimationPlayer" parent="Slimes_Parts/Slimes"]
+libraries = {
+&"": SubResource("AnimationLibrary_sakpa")
+}
+autoplay = "float-faces"
+
+[node name="Entry_Anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2yc6d")
+}
+autoplay = "entry"

@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cka7bweid7pbr"]
+
+[ext_resource type="FontFile" uid="uid://d3ctg8lkm0upu" path="res://fonts/ThaleahFat.ttf" id="1_6yy5q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s188d"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yj0ry"]
+bg_color = Color(0, 0, 0, 0.368627)
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(1, 0, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 0.662745)
+Button/constants/outline_size = 3
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_6yy5q")
+Button/styles/hover = SubResource("StyleBoxFlat_s188d")
+Button/styles/normal = SubResource("StyleBoxFlat_yj0ry")

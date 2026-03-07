@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgbdnakqj0rbn"]
+
+[ext_resource type="Script" uid="uid://dsnxu035srlgh" path="res://player/snipes/golden_sniper/golden_sniper.gd" id="1_nh64l"]
+[ext_resource type="Texture2D" uid="uid://c3i0nc4ykdwhw" path="res://assets/Objects/Guns/snipe/golden_sniper.png" id="2_nh64l"]
+[ext_resource type="AudioStream" uid="uid://covtnc3in5pp2" path="res://assets/sounds/308 (7.62x51)/308 Single Isolated.mp3" id="3_f4sl0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8i20"]
+size = Vector2(758, 544)
+
+[node name="Golden_Sniper" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_nh64l")
+
+[node name="Range" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_n8i20")
+
+[node name="Pivot" type="Marker2D" parent="."]
+
+[node name="Pistol" type="Sprite2D" parent="Pivot"]
+position = Vector2(35, -2)
+scale = Vector2(3, 2.5)
+texture = ExtResource("2_nh64l")
+region_enabled = true
+region_rect = Rect2(0, 0, 30, 8)
+
+[node name="Bullet_Point" type="Marker2D" parent="Pivot/Pistol"]
+position = Vector2(13.3333, -0.4)
+
+[node name="CD_Shoot" type="Timer" parent="."]
+one_shot = true
+
+[node name="Shot_Sound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_f4sl0")
+
+[connection signal="timeout" from="CD_Shoot" to="." method="_on_cd_shoot_timeout"]

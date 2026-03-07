@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp041nksurdfx"]
+
+[ext_resource type="Script" uid="uid://ckak5dvdghm8b" path="res://player/Icons/Weapon_Icon.gd" id="1_rdpk5"]
+[ext_resource type="PackedScene" uid="uid://c76q88nufr85k" path="res://player/assault_rifles/assault_branca/assault_rifle.tscn" id="2_3yv2g"]
+[ext_resource type="Texture2D" uid="uid://db6yjtpyruxgl" path="res://assets/Objects/projecties/Bolt_white.png" id="3_rdpk5"]
+[ext_resource type="Texture2D" uid="uid://cwriagktr0pr2" path="res://assets/Objects/Guns/assault/weaponR1.png" id="4_imlp2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_87qbi"]
+radius = 21.0238
+
+[node name="Assault_Branca_Icon" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_rdpk5")
+gun = ExtResource("2_3yv2g")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("3_rdpk5")
+region_rect = Rect2(0, 0, 10, 8)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_87qbi")
+
+[node name="Icon" type="Sprite2D" parent="."]
+rotation = -0.523599
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("4_imlp2")
+region_enabled = true
+region_rect = Rect2(482, 1167, 1261, 623)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

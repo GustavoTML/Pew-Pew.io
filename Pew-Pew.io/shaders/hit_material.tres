@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dodiqika3lwwb"]
+
+[ext_resource type="Shader" uid="uid://bd3f86bq5xq8l" path="res://shaders/hit.gdshader" id="1_bruqa"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_bruqa")
+shader_parameter/blink_color = Color(1, 0, 0, 1)
+shader_parameter/blink_intensity = 0.0

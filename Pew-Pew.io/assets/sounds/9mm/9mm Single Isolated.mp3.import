@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfk7yp48difkr"
+path="res://.godot/imported/9mm Single Isolated.mp3-077749ad7bc8b9a42d4e5b811c0d2f54.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/9mm/9mm Single Isolated.mp3"
+dest_files=["res://.godot/imported/9mm Single Isolated.mp3-077749ad7bc8b9a42d4e5b811c0d2f54.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

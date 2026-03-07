@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://c774mcoubcvby"]
+
+[ext_resource type="Script" uid="uid://ckak5dvdghm8b" path="res://player/Icons/Weapon_Icon.gd" id="1_tdtxc"]
+[ext_resource type="PackedScene" uid="uid://d0onmfjbohg3k" path="res://player/heavyguns/flamethrow/flamethrow.tscn" id="2_onscp"]
+[ext_resource type="Texture2D" uid="uid://db6yjtpyruxgl" path="res://assets/Objects/projecties/Bolt_white.png" id="3_30s1f"]
+[ext_resource type="Texture2D" uid="uid://tbbcl5228s24" path="res://assets/Objects/Guns/Pixels_Guns.png" id="4_onscp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ltgyu"]
+radius = 21.0238
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_30s1f"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_ltgyu"]
+_data = [Vector2(0.00390625, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_bp2fn"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Flamethrow_Icon" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_tdtxc")
+gun = ExtResource("2_onscp")
+set_rarity = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("3_30s1f")
+region_rect = Rect2(0, 0, 10, 8)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_ltgyu")
+
+[node name="Icon" type="Sprite2D" parent="."]
+rotation = -0.523599
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_onscp")
+region_enabled = true
+region_rect = Rect2(112, 66, 51, 30)
+
+[node name="Flame" type="CPUParticles2D" parent="Icon"]
+material = SubResource("CanvasItemMaterial_30s1f")
+position = Vector2(24.1658, -4.52307)
+rotation = 0.523599
+amount = 20
+lifetime = 0.3
+direction = Vector2(0, -1)
+gravity = Vector2(0, -100)
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+scale_amount_min = 2.0
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_ltgyu")
+color = Color(1, 0.384314, 0, 1)
+color_ramp = SubResource("Gradient_bp2fn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7nb7myqp8khm"]
+
+[ext_resource type="Script" uid="uid://ckak5dvdghm8b" path="res://player/Icons/Weapon_Icon.gd" id="1_q4ef0"]
+[ext_resource type="PackedScene" uid="uid://b2pvs0h023vku" path="res://player/shotguns/mini_shotgun/mini_shotgun.tscn" id="2_hgdvc"]
+[ext_resource type="Texture2D" uid="uid://db6yjtpyruxgl" path="res://assets/Objects/projecties/Bolt_white.png" id="3_q4ef0"]
+[ext_resource type="Texture2D" uid="uid://bavaqpw01vehj" path="res://assets/Objects/Guns/shotgun/Mini_Shotgun.png" id="4_od35l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ojne"]
+radius = 21.0238
+
+[node name="Mini_Shotgun_Icon" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_q4ef0")
+gun = ExtResource("2_hgdvc")
+set_rarity = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("3_q4ef0")
+region_rect = Rect2(0, 0, 10, 8)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_3ojne")
+
+[node name="Icon" type="Sprite2D" parent="."]
+rotation = -0.523599
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_od35l")
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 11)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

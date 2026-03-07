@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://cw2d5mhlbqoxv"]
+
+[ext_resource type="Texture2D" uid="uid://cqbhir38wtc4l" path="res://assets/UIs/buttons/Pause0.5x.png" id="1_40o7i"]
+[ext_resource type="Script" uid="uid://dd186klefwjtl" path="res://huds/player_hud/player_hud.gd" id="1_xk3l3"]
+[ext_resource type="FontFile" uid="uid://q4xixt6t313n" path="res://fonts/PixelOperator8.ttf" id="2_fm455"]
+[ext_resource type="Texture2D" uid="uid://dajxll526tuor" path="res://assets/UIs/buttons/fullscreen0.5x.png" id="3_mp3ne"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gdm0"]
+bg_color = Color(0, 0, 0, 0.8)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwolf"]
+bg_color = Color(0, 0.780392, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_40o7i"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_0gdm0")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_vwolf")
+
+[sub_resource type="LabelSettings" id="LabelSettings_xk3l3"]
+font = ExtResource("2_fm455")
+
+[node name="Player_Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xk3l3")
+
+[node name="Pause" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -52.0
+offset_top = 14.0
+offset_right = -16.0
+offset_bottom = 50.0
+grow_horizontal = 0
+focus_mode = 0
+icon = ExtResource("1_40o7i")
+
+[node name="Fullscreen" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -93.0
+offset_top = 14.0
+offset_right = -57.0
+offset_bottom = 50.0
+grow_horizontal = 0
+focus_mode = 0
+icon = ExtResource("3_mp3ne")
+
+[node name="Xp_Bar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -23.0
+offset_right = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_40o7i")
+value = 75.0
+
+[node name="Level_Text" type="Label" parent="Xp_Bar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = -23.0
+offset_right = 44.0
+offset_bottom = 1.0
+grow_horizontal = 2
+text = "Level 1"
+label_settings = SubResource("LabelSettings_xk3l3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="Fullscreen" to="." method="_on_fullscreen_pressed"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0onmfjbohg3k"]
+
+[ext_resource type="Script" uid="uid://dbac7v4ucohcj" path="res://player/heavyguns/flamethrow/flamethrow.gd" id="1_ck63q"]
+[ext_resource type="Texture2D" uid="uid://tbbcl5228s24" path="res://assets/Objects/Guns/Pixels_Guns.png" id="2_k5pph"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8i20"]
+size = Vector2(758, 544)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ck63q"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_ck63q"]
+_data = [Vector2(0, 0.299611), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_k5pph"]
+offsets = PackedFloat32Array(0, 0.810811, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Flamethrow" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_ck63q")
+
+[node name="Range" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_n8i20")
+
+[node name="Pivot" type="Marker2D" parent="."]
+
+[node name="Pistol" type="Sprite2D" parent="Pivot"]
+position = Vector2(24, 2)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("2_k5pph")
+region_enabled = true
+region_rect = Rect2(112, 66, 51, 30)
+
+[node name="Bullet_Point" type="Marker2D" parent="Pivot/Pistol"]
+position = Vector2(23, -3.5)
+
+[node name="Flame" type="CPUParticles2D" parent="Pivot/Pistol/Bullet_Point"]
+material = SubResource("CanvasItemMaterial_ck63q")
+amount = 350
+lifetime = 0.6
+emission_shape = 1
+emission_sphere_radius = 3.0
+spread = 7.5
+gravity = Vector2(0, -50)
+initial_velocity_min = 400.0
+initial_velocity_max = 500.0
+scale_amount_min = 5.0
+scale_amount_max = 12.0
+scale_amount_curve = SubResource("Curve_ck63q")
+color = Color(1, 0.247059, 0, 1)
+color_ramp = SubResource("Gradient_k5pph")
+
+[node name="CD_Shoot" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="CD_Shoot" to="." method="_on_cd_shoot_timeout"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://uxnnqs7c0ad4"]
+
+[ext_resource type="Script" uid="uid://5imvranp1qnt" path="res://enemies/projecties/slime_shot/slime_shot.gd" id="1_lgel6"]
+[ext_resource type="Texture2D" uid="uid://db6yjtpyruxgl" path="res://assets/Objects/projecties/Bolt_white.png" id="2_lgel6"]
+
+[sub_resource type="Gradient" id="Gradient_32hag"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lgel6"]
+gradient = SubResource("Gradient_32hag")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1y6ct"]
+
+[node name="Slime_Shot" type="Area2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_lgel6")
+
+[node name="Light2" type="PointLight2D" parent="."]
+visible = false
+color = Color(0.975201, 0.000780681, 0.975194, 1)
+energy = 3.0
+shadow_filter_smooth = 1.8
+texture = SubResource("GradientTexture2D_lgel6")
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1y6ct")
+debug_color = Color(0.89854, 0, 0.107365, 0.42)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 0.913725, 0, 1)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_lgel6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

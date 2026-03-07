@@ -1,0 +1,477 @@
+[gd_scene load_steps=25 format=3 uid="uid://cakfd2ujwauww"]
+
+[ext_resource type="Script" uid="uid://vl3v123hd60b" path="res://huds/new_gun_menu/new_gun_menu.gd" id="1_ugssc"]
+[ext_resource type="FontFile" uid="uid://d3ctg8lkm0upu" path="res://fonts/ThaleahFat.ttf" id="2_jnmhj"]
+[ext_resource type="Script" uid="uid://dat1pvh15itr6" path="res://huds/new_gun_menu/options/ramdom_icon.gd" id="3_xrerx"]
+[ext_resource type="Texture2D" uid="uid://bawvpptph1hff" path="res://assets/players/char 1/no hands/walk_5.png" id="4_4x52b"]
+[ext_resource type="Texture2D" uid="uid://cxgenm3tum63j" path="res://assets/UIs/buttons/Exit.png" id="4_lvs1v"]
+[ext_resource type="Script" uid="uid://ce7w35b1iprun" path="res://huds/new_gun_menu/hand_selector.gd" id="4_pcvtc"]
+[ext_resource type="Texture2D" uid="uid://lhcaf0iahe8t" path="res://assets/players/char 1/no hands/roll_4.png" id="5_pcvtc"]
+[ext_resource type="Texture2D" uid="uid://du6a0mo7uqao4" path="res://assets/players/char 1/with hands/idle_3.png" id="6_lvs1v"]
+[ext_resource type="Texture2D" uid="uid://bvhatu52qiq7x" path="res://assets/players/char 1/with hands/idle_2.png" id="8_lhcrl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xrerx"]
+font = ExtResource("2_jnmhj")
+font_size = 80
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugssc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jnmhj"]
+bg_color = Color(0, 0, 0, 0.356863)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x52b"]
+atlas = ExtResource("4_lvs1v")
+region = Rect2(7, 7, 98, 98)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6bmud"]
+font = ExtResource("2_jnmhj")
+font_size = 112
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4x52b"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcvtc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvs1v"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcvtc"]
+atlas = ExtResource("6_lvs1v")
+region = Rect2(1127, 1601, 131, 143)
+
+[sub_resource type="Animation" id="Animation_7n042"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("char/Hand_Right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-280, -162)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("char/Hand_Left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, -170)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("char/Hand_Left:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.0472]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("char/Hand_Right:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0472]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("char/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("char/Head:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, -348)]
+}
+
+[sub_resource type="Animation" id="Animation_gby05"]
+resource_name = "float_hand"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("char/Hand_Right:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-280, -162), Vector2(-252, -175)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("char/Hand_Left:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(300, -170), Vector2(280, -175)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("char/Hand_Left:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0472, -1.309]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("char/Hand_Right:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0472, 1.309]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("char/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.0872665]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("char/Head:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(18, -348), Vector2(8, -348)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_smu5n"]
+_data = {
+&"RESET": SubResource("Animation_7n042"),
+&"float_hand": SubResource("Animation_gby05")
+}
+
+[sub_resource type="Animation" id="Animation_lvs1v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("char:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("char:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 307)]
+}
+
+[sub_resource type="Animation" id="Animation_pcvtc"]
+resource_name = "entry"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("char:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("char:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6.00002, 307), Vector2(6.00002, 73)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t81f0"]
+_data = {
+&"RESET": SubResource("Animation_lvs1v"),
+&"entry": SubResource("Animation_pcvtc")
+}
+
+[node name="New_Gun_Menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ugssc")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.5
+offset_top = -162.0
+offset_right = 71.5
+offset_bottom = -139.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Escolha uma arma!"
+label_settings = SubResource("LabelSettings_xrerx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.0
+offset_top = -65.0
+offset_right = 301.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="Option1" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(98, 98)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 1
+theme_override_styles/hover = SubResource("StyleBoxFlat_ugssc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jnmhj")
+script = ExtResource("3_xrerx")
+
+[node name="Point" type="Marker2D" parent="HBoxContainer/Option1"]
+z_index = -1
+position = Vector2(49, 49)
+scale = Vector2(2.5, 2.5)
+
+[node name="Option2" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(98, 98)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/hover = SubResource("StyleBoxFlat_ugssc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jnmhj")
+script = ExtResource("3_xrerx")
+
+[node name="Point" type="Marker2D" parent="HBoxContainer/Option2"]
+z_index = -1
+position = Vector2(49, 49)
+scale = Vector2(2.5, 2.5)
+
+[node name="Option3" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(98, 98)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/hover = SubResource("StyleBoxFlat_ugssc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jnmhj")
+script = ExtResource("3_xrerx")
+
+[node name="Point" type="Marker2D" parent="HBoxContainer/Option3"]
+z_index = -1
+position = Vector2(49, 49)
+scale = Vector2(2.5, 2.5)
+
+[node name="No_Gun" type="Button" parent="HBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(98, 98)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_ugssc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jnmhj")
+icon = SubResource("AtlasTexture_4x52b")
+
+[node name="Hand_Selector" type="Container" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.4401
+offset_top = -145.0
+offset_right = 18.0
+offset_bottom = -105.0
+script = ExtResource("4_pcvtc")
+
+[node name="char" type="Sprite2D" parent="Hand_Selector"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(6, 307)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_4x52b")
+region_enabled = true
+region_rect = Rect2(906, 1560, 225, 195)
+
+[node name="Text_hand" type="Label" parent="Hand_Selector/char"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -408.5
+offset_top = -981.5
+offset_right = 265.5
+offset_bottom = -852.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Selecione a mão!"
+label_settings = SubResource("LabelSettings_6bmud")
+
+[node name="Head" type="Sprite2D" parent="Hand_Selector/char"]
+position = Vector2(18, -348)
+texture = ExtResource("5_pcvtc")
+region_enabled = true
+region_rect = Rect2(755, 1132, 550, 528)
+
+[node name="Hand_Left" type="Sprite2D" parent="Hand_Selector/char"]
+position = Vector2(300, -170)
+rotation = -1.0472
+region_enabled = true
+region_rect = Rect2(1122, 1607, 141, 135)
+
+[node name="Left_Option" type="Button" parent="Hand_Selector/char/Hand_Left"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.6238
+offset_top = -138.992
+offset_right = 158.376
+offset_bottom = 118.008
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_4x52b")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_pcvtc")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lvs1v")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_lvs1v")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lvs1v")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_lvs1v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lvs1v")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_lvs1v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lvs1v")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_lvs1v")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lvs1v")
+icon = SubResource("AtlasTexture_pcvtc")
+
+[node name="Hand_Right" type="Sprite2D" parent="Hand_Selector/char"]
+position = Vector2(-280, -162)
+rotation = 1.0472
+texture = ExtResource("8_lhcrl")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(781, 1601, 137, 134)
+
+[node name="Right_Option" type="Button" parent="Hand_Selector/char/Hand_Right"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -474.813
+offset_top = 146.517
+offset_right = 77.1874
+offset_bottom = 371.517
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.785397
+
+[node name="Basic_Anim" type="AnimationPlayer" parent="Hand_Selector"]
+libraries = {
+&"": SubResource("AnimationLibrary_smu5n")
+}
+autoplay = "float_hand"
+speed_scale = 0.7
+
+[node name="Hand_seletor_Anim" type="AnimationPlayer" parent="Hand_Selector"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_t81f0")
+}
+speed_scale = 4.0
+
+[connection signal="pressed" from="HBoxContainer/Option1" to="." method="_on_option_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/Option2" to="." method="_on_option_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/Option3" to="." method="_on_option_3_pressed"]
+[connection signal="pressed" from="HBoxContainer/No_Gun" to="." method="_on_no_gun_pressed"]
+[connection signal="mouse_entered" from="Hand_Selector/char/Hand_Left/Left_Option" to="Hand_Selector" method="_on_left_option_mouse_entered"]
+[connection signal="mouse_exited" from="Hand_Selector/char/Hand_Left/Left_Option" to="Hand_Selector" method="_on_left_option_mouse_exited"]
+[connection signal="pressed" from="Hand_Selector/char/Hand_Left/Left_Option" to="Hand_Selector" method="_on_left_option_pressed"]
+[connection signal="pressed" from="Hand_Selector/char/Hand_Right/Right_Option" to="Hand_Selector" method="_on_right_option_pressed"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://da08i3dn2cwna"]
+
+[ext_resource type="Script" uid="uid://d2plq05jqk6vs" path="res://player/shotguns/good_shotgun/good_shotgun.gd" id="1_7yjra"]
+[ext_resource type="Texture2D" uid="uid://byrxul5peejag" path="res://assets/Objects/Guns/shotgun/Shotgun.png" id="1_hv74t"]
+[ext_resource type="AudioStream" uid="uid://db3ke33jcffj0" path="res://assets/sounds/20 Gauge/20 Gauge Single Isolated.mp3" id="3_2jij5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8i20"]
+size = Vector2(758, 544)
+
+[node name="Good_Shotgun" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_7yjra")
+
+[node name="Range" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_n8i20")
+
+[node name="Pivot" type="Marker2D" parent="."]
+
+[node name="Pistol" type="Sprite2D" parent="Pivot"]
+unique_name_in_owner = true
+position = Vector2(31, -4)
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("1_hv74t")
+region_enabled = true
+region_rect = Rect2(0, 0, 31, 7)
+
+[node name="Bullet_Point" type="Marker2D" parent="Pivot/Pistol"]
+position = Vector2(15, -1)
+
+[node name="CD_Shoot" type="Timer" parent="."]
+one_shot = true
+
+[node name="Shot_Sound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_2jij5")
+
+[connection signal="timeout" from="CD_Shoot" to="." method="_on_cd_shoot_timeout"]

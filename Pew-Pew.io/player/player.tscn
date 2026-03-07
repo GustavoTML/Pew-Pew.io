@@ -1,0 +1,133 @@
+[gd_scene load_steps=20 format=3 uid="uid://ckngl6pycun3g"]
+
+[ext_resource type="Texture2D" uid="uid://d0cqobs41iutl" path="res://assets/players/char 1/no hands/idle_0.png" id="1_kb6p2"]
+[ext_resource type="Script" uid="uid://bng2ttk4grgur" path="res://player/player.gd" id="1_wodsf"]
+[ext_resource type="Texture2D" uid="uid://b2easj8dnqyfh" path="res://assets/players/char 1/no hands/idle_1.png" id="2_wodsf"]
+[ext_resource type="Texture2D" uid="uid://bhygvar8y7vxp" path="res://assets/players/char 1/no hands/idle_2.png" id="3_32hag"]
+[ext_resource type="Texture2D" uid="uid://dtj8gw60h0edp" path="res://assets/players/char 1/no hands/idle_3.png" id="4_tqiix"]
+[ext_resource type="Texture2D" uid="uid://det5e63c1h7bb" path="res://assets/players/char 1/no hands/idle_4.png" id="5_e7oew"]
+[ext_resource type="Texture2D" uid="uid://wlr6eus3pqgh" path="res://assets/players/char 1/no hands/idle_5.png" id="6_c35mf"]
+[ext_resource type="Texture2D" uid="uid://bme06p5lvt5iv" path="res://assets/players/char 1/no hands/walk_0.png" id="7_65viv"]
+[ext_resource type="Texture2D" uid="uid://dn5dhv11oy80l" path="res://assets/players/char 1/no hands/walk_1.png" id="8_x7c3f"]
+[ext_resource type="Texture2D" uid="uid://c00skj4a6u83u" path="res://assets/players/char 1/no hands/walk_2.png" id="9_bjvpn"]
+[ext_resource type="Texture2D" uid="uid://bsyrsbpjgo43x" path="res://assets/players/char 1/no hands/walk_3.png" id="10_s7qer"]
+[ext_resource type="Texture2D" uid="uid://b7ompxv0yrqjf" path="res://assets/players/char 1/no hands/walk_4.png" id="11_g4c7l"]
+[ext_resource type="Texture2D" uid="uid://bawvpptph1hff" path="res://assets/players/char 1/no hands/walk_5.png" id="12_knn7v"]
+[ext_resource type="Texture2D" uid="uid://c22cgj0qknger" path="res://assets/players/char 1/no hands/walk_6.png" id="13_7pqkx"]
+[ext_resource type="Texture2D" uid="uid://bm1ulupuuyhmc" path="res://assets/players/char 1/no hands/walk_7.png" id="14_uw77l"]
+[ext_resource type="Theme" uid="uid://dsb8vqlp2t462" path="res://themes/enemy_lifebar.tres" id="17_tqiix"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32hag"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rptt4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kb6p2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wodsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_32hag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tqiix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e7oew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c35mf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_65viv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x7c3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bjvpn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_s7qer")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_g4c7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_knn7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7pqkx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_uw77l")
+}],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kb6p2"]
+radius = 16.0
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+script = ExtResource("1_wodsf")
+
+[node name="Lifebar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+modulate = Color(0, 1, 0, 1)
+offset_left = -50.0
+offset_top = 8.0
+offset_right = 287.0
+offset_bottom = 31.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("17_tqiix")
+theme_override_styles/fill = SubResource("StyleBoxFlat_32hag")
+value = 50.0
+show_percentage = false
+
+[node name="Anim" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+position = Vector2(-0.599998, -60.6)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_rptt4")
+animation = &"run"
+frame_progress = 0.542616
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.599998, 0.399994)
+shape = SubResource("CircleShape2D_kb6p2")
+
+[node name="Hand_1" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-14, 0)
+
+[node name="Hand_2" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(11, 0)
+
+[node name="Knockback_CD" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Knockback_CD" to="." method="_on_knockback_cd_timeout"]

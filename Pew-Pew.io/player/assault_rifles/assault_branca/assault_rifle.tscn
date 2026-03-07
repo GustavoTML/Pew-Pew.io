@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://c76q88nufr85k"]
+
+[ext_resource type="Script" uid="uid://dklten65idovq" path="res://player/assault_rifles/assault_branca/assault_rifle.gd" id="1_1yk7x"]
+[ext_resource type="Texture2D" uid="uid://cwriagktr0pr2" path="res://assets/Objects/Guns/assault/weaponR1.png" id="1_2sbxf"]
+[ext_resource type="AudioStream" uid="uid://c01q3y4t3l8cq" path="res://assets/sounds/5.56/556 Single MP3.mp3" id="3_f4g7w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yk7x"]
+size = Vector2(758, 544)
+
+[node name="Assault_Rifle" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_1yk7x")
+
+[node name="Range" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_1yk7x")
+
+[node name="Pivot" type="Marker2D" parent="."]
+
+[node name="Pistol" type="Sprite2D" parent="Pivot"]
+position = Vector2(27, -2)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_2sbxf")
+region_enabled = true
+region_rect = Rect2(471, 1163, 1278, 632)
+
+[node name="Bullet_Point" type="Marker2D" parent="Pivot/Pistol"]
+position = Vector2(580, -40)
+
+[node name="CD_Shoot" type="Timer" parent="."]
+one_shot = true
+
+[node name="Shot_Sound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_f4g7w")
+volume_db = -35.0
+
+[connection signal="timeout" from="CD_Shoot" to="." method="_on_cd_shoot_timeout"]

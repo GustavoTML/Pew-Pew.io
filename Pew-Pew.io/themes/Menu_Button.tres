@@ -1,0 +1,5 @@
+[gd_resource type="Theme" format=3 uid="uid://camywjrgalxju"]
+
+[resource]
+Button/colors/icon_hover_color = Color(0, 0, 1, 1)
+Button/colors/icon_normal_color = Color(0.133333, 0.235294, 0.560784, 1)

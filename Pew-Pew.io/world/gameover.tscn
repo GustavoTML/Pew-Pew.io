@@ -1,0 +1,212 @@
+[gd_scene load_steps=13 format=3 uid="uid://cy16fy4h6nrku"]
+
+[ext_resource type="Script" uid="uid://bsm8id64g2vu1" path="res://world/gameover.gd" id="1_eis37"]
+[ext_resource type="FontFile" uid="uid://celgr0jjlup6m" path="res://fonts/PixelOperator8-Bold.ttf" id="1_xtavl"]
+[ext_resource type="Texture2D" uid="uid://xq07nt05t82g" path="res://assets/UIs/buttons/Reset.png" id="2_eis37"]
+[ext_resource type="Texture2D" uid="uid://cxgenm3tum63j" path="res://assets/UIs/buttons/Exit.png" id="3_pj8r4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ewdq"]
+font = ExtResource("1_xtavl")
+font_size = 64
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="Theme" id="Theme_tc6uq"]
+Button/colors/icon_hover_color = Color(0, 0, 1, 1)
+Button/colors/icon_normal_color = Color(0.133333, 0.235294, 0.560784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ksjq0"]
+bg_color = Color(0, 0, 0, 0.411765)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iyxfa"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_jnq4x"]
+Button/colors/icon_hover_color = Color(1, 0, 0, 1)
+Button/colors/icon_normal_color = Color(0.741176, 0.0196078, 0.133333, 1)
+
+[sub_resource type="Animation" id="Animation_iyxfa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Buttons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ksjq0"]
+resource_name = "entry"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Buttons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.36, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vteq3"]
+_data = {
+&"RESET": SubResource("Animation_iyxfa"),
+&"entry": SubResource("Animation_ksjq0")
+}
+
+[node name="Gameover" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eis37")
+
+[node name="BG" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0.666667)
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = -224.0
+offset_right = 488.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAMEOVER"
+label_settings = SubResource("LabelSettings_3ewdq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = 16.0
+offset_right = 210.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Restart" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_tc6uq")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_ksjq0")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ksjq0")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iyxfa")
+icon = ExtResource("2_eis37")
+
+[node name="Exit" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_jnq4x")
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 0, 0.733333)
+theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxFlat_ksjq0")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ksjq0")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_iyxfa")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iyxfa")
+icon = ExtResource("3_pj8r4")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vteq3")
+}
+
+[connection signal="pressed" from="Buttons/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Buttons/Exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cllg1c42wbxh0"]
+
+[ext_resource type="Script" uid="uid://btje72uxexlg6" path="res://player/bullets/light_bullet.gd" id="1_5dnn2"]
+
+[sub_resource type="Gradient" id="Gradient_j40gx"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_boyjm"]
+gradient = SubResource("Gradient_j40gx")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccap1"]
+size = Vector2(16, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5dnn2"]
+radius = 230.02
+
+[node name="Light_Bullet" type="Area2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_5dnn2")
+
+[node name="Light2" type="PointLight2D" parent="."]
+scale = Vector2(0.46, 0.46)
+color = Color(1, 1, 0, 1)
+energy = 3.0
+shadow_filter_smooth = 1.8
+texture = SubResource("GradientTexture2D_boyjm")
+
+[node name="Bullet" type="Polygon2D" parent="."]
+color = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-8.2179, -4.73221, 4.77737, -3.37853, 8.00919, -0.0855007, 4.77737, 3.25447, -8.15226, 4.6934)
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_ccap1")
+debug_color = Color(0.89854, 0, 0.107365, 0.42)
+
+[node name="Monitoring_Area" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="Collision" type="CollisionShape2D" parent="Monitoring_Area"]
+shape = SubResource("CircleShape2D_5dnn2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

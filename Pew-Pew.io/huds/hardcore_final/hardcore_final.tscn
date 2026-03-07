@@ -1,0 +1,418 @@
+[gd_scene load_steps=15 format=3 uid="uid://bbs3dfxnj7f45"]
+
+[ext_resource type="FontFile" uid="uid://celgr0jjlup6m" path="res://fonts/PixelOperator8-Bold.ttf" id="1_m8an6"]
+[ext_resource type="Script" uid="uid://dhgdki5ddtru8" path="res://huds/hardcore_final/hardcore_final.gd" id="1_ocb82"]
+[ext_resource type="Texture2D" uid="uid://3c3lp1hmijui" path="res://assets/UIs/GUI.png" id="2_ocb82"]
+[ext_resource type="Theme" uid="uid://cka7bweid7pbr" path="res://themes/menu_button2.tres" id="3_nekqg"]
+[ext_resource type="FontFile" uid="uid://d3ctg8lkm0upu" path="res://fonts/ThaleahFat.ttf" id="4_2go44"]
+[ext_resource type="Script" uid="uid://c3dx3gs61fhye" path="res://huds/hardcore_final/informações.gd" id="6_nekqg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ocb82"]
+font = ExtResource("1_m8an6")
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(1, 0, 0, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vteq3"]
+atlas = ExtResource("2_ocb82")
+region = Rect2(113, 81, 30, 14)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nekqg"]
+font = ExtResource("4_2go44")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_2go44"]
+font = ExtResource("4_2go44")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_41wqu"]
+font = ExtResource("4_2go44")
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_2go44"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Buttons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Informações/NinePatchRect:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Informações/NinePatchRect/VBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Informações/NinePatchRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_nekqg"]
+resource_name = "entry"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Buttons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.93333, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.266667, 0.5),
+"transitions": PackedFloat32Array(2.92817, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Informações/NinePatchRect:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.533333, 0.933333, 1.26667),
+"transitions": PackedFloat32Array(3.73213, 4.14106, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(0.2, 1), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Informações/NinePatchRect/VBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.4, 1.52971),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [10],
+"method": &"camerashake"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Informações/NinePatchRect:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_41wqu"]
+_data = {
+&"RESET": SubResource("Animation_2go44"),
+&"entry": SubResource("Animation_nekqg")
+}
+
+[node name="Hardcore_Final" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ocb82")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -476.0
+offset_top = -284.0
+offset_right = 476.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(476, 99)
+text = "VOCE VENCEU
+O HARDCORE MODE!
+"
+label_settings = SubResource("LabelSettings_ocb82")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(420, 89)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -269.0
+offset_top = 235.0
+offset_right = 269.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Restart" type="TextureRect" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "recomeçar"
+texture = SubResource("AtlasTexture_vteq3")
+
+[node name="Restart" type="Button" parent="Buttons/Restart"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.067
+anchor_right = 0.968
+anchor_bottom = 0.933
+offset_left = 0.0239997
+offset_top = -0.04
+offset_right = -0.0240173
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("3_nekqg")
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 1, 0, 0.662745)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_2go44")
+theme_override_font_sizes/font_size = 48
+text = "RESTART"
+
+[node name="Exit" type="TextureRect" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_vteq3")
+
+[node name="Exit" type="Button" parent="Buttons/Exit"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.067
+anchor_right = 0.968
+anchor_bottom = 0.933
+offset_left = 0.0239997
+offset_top = -0.04
+offset_right = -0.0240173
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("3_nekqg")
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 0.662745)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_2go44")
+theme_override_font_sizes/font_size = 48
+text = "EXIT"
+
+[node name="Informações" type="Control" parent="."]
+layout_mode = 1
+anchor_left = -0.027
+anchor_top = 0.472
+anchor_right = 1.0
+anchor_bottom = 0.698
+offset_left = 434.56
+offset_top = -91.84
+offset_right = -400.0
+offset_bottom = 73.44
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_nekqg")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Informações"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_right = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(328, 177)
+texture = ExtResource("2_ocb82")
+region_rect = Rect2(96, 36, 26, 24)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Informações/NinePatchRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 59.0
+offset_top = -83.0
+offset_right = 567.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Nivel" type="Label" parent="Informações/NinePatchRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Nivel: 99"
+label_settings = SubResource("LabelSettings_nekqg")
+
+[node name="Enemies_Defeat" type="Label" parent="Informações/NinePatchRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Inimigos derrotados: 999"
+label_settings = SubResource("LabelSettings_nekqg")
+
+[node name="Deaths" type="Label" parent="Informações/NinePatchRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mortes: 10"
+label_settings = SubResource("LabelSettings_nekqg")
+
+[node name="Dano" type="Label" parent="Informações/NinePatchRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "DANO SOFRIDO: 999"
+label_settings = SubResource("LabelSettings_nekqg")
+
+[node name="Armas" type="Label" parent="Informações/NinePatchRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ARMAS FINAIS:"
+label_settings = SubResource("LabelSettings_nekqg")
+
+[node name="Arma_1" type="Label" parent="Informações/NinePatchRect/VBoxContainer/Armas"]
+layout_mode = 0
+offset_left = 184.0
+offset_right = 242.0
+offset_bottom = 30.0
+text = "Arma 1"
+label_settings = SubResource("LabelSettings_2go44")
+
+[node name="Arma_2" type="Label" parent="Informações/NinePatchRect/VBoxContainer/Armas/Arma_1"]
+layout_mode = 1
+offset_top = 31.0
+offset_right = 158.0
+offset_bottom = 61.0
+text = "ARMA 2"
+label_settings = SubResource("LabelSettings_41wqu")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_41wqu")
+}
+
+[connection signal="pressed" from="Buttons/Restart/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Buttons/Exit/Exit" to="." method="_on_exit_pressed"]
